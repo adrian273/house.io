@@ -16,16 +16,20 @@ import VueSocketIOExt from "vue-socket.io-extended";
 import PrettyCheckbox from 'pretty-checkbox-vue';
 import VueFlashMessage from 'vue-flash-message';
 
+// Client connect to server (host from IO server/index.js)
 const socket = io('http://localhost:4000')
 
-
+// Start plugins
 Vue.use(VueSocketIOExt, socket);
 Vue.use(PrettyCheckbox);
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(VueFlashMessage)
+
+
 require('vue-flash-message/dist/vue-flash-message.min.css');
 
+// Routes Config
 const router = new VueRouter({
   mode: 'history',
   routes,
@@ -33,6 +37,7 @@ const router = new VueRouter({
   linkExactActiveClass: "exact-active",
 })
 
+// the vue instance
 new Vue({
   render: h => h(App),
   sockets: {
